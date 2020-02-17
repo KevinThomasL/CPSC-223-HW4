@@ -1,6 +1,6 @@
 
 //----------------------------------------------------------------------
-// Author: S. Bowers
+// Author: Kevin Lunden
 // Course: CPSC 223, Spring 2020
 // Assign: 3
 // File:   collection.h

@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 // Test 1
 TEST(BasicListTest, CorrectSize) {
   LinkedListCollection<string,double> c;
@@ -17,7 +16,6 @@ TEST(BasicListTest, CorrectSize) {
   ASSERT_EQ(2, c.size());
   c.add("c", 20.0);
   ASSERT_EQ(3, c.size());
-
 }
 
 // Test 2
@@ -55,6 +53,16 @@ TEST(BasicListTest, SimpleRemoveElems) {
   c.remove("d");
   ASSERT_EQ(0, c.size());
   ASSERT_EQ(false, c.find("c", v));  
+
+  c.add("k", 10);
+  c.add("l", 20);
+  ASSERT_EQ(2, c.size());
+  c.remove("k"); //test remove two at once
+  c.remove("l"); //
+                 
+  ASSERT_EQ(0, c.size()); //
+  ASSERT_EQ(false, c.find("k", v)); //
+  ASSERT_EQ(false, c.find("l", v)); //
 }
 
 // Test 4
