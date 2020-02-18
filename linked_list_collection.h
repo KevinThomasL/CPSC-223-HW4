@@ -107,7 +107,22 @@ LinkedListCollection<K,V>::LinkedListCollection(const LinkedListCollection<K,V>&
 template <typename K, typename V>
 LinkedListCollection<K,V>&LinkedListCollection<K,V>::operator=(const LinkedListCollection<K,V>& rhs)
 {
- 
+ if (head == rhs.head)
+  return *this;
+ else
+ {
+  make_empty();
+  Node* tmp = rhs.head;
+  head = nullptr;
+  tail = nullptr;
+  length = 0;
+  while (tmp != nullptr)
+  {
+   add(tmp->key, tmp->value);
+   tmp = tmp->next;
+  }
+  return *this;
+ } 
 }
 
 // destructor to delete a linked list
@@ -153,11 +168,15 @@ void LinkedListCollection<K,V>::remove(const K& a_key)
  //if only one node
  if (length == 1)
  {
-  delete tmp;
-  tmp = nullptr;
-  head = nullptr;
-  tail = nullptr;
-  length--;
+  if (tmp->key == a_key)
+  {
+   delete tmp;
+   tmp = nullptr;
+   head = nullptr;
+   tail = nullptr;
+   length--;
+   return;
+  }
   return;
  }
 
